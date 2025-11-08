@@ -134,6 +134,12 @@
             padding: 20px;
             position: relative;
             z-index: 1;
+            animation: fadeIn 2s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         /* Header Styles */
@@ -141,6 +147,21 @@
             text-align: center;
             padding: 40px 20px;
             position: relative;
+        }
+
+        .invitation-text {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2rem;
+            color: var(--dark-gold);
+            margin-bottom: 30px;
+            line-height: 1.4;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            animation: gentlePulse 4s infinite alternate;
+        }
+
+        @keyframes gentlePulse {
+            from { transform: scale(1); }
+            to { transform: scale(1.03); }
         }
 
         .ganesh-container {
@@ -197,6 +218,7 @@
             line-height: 1.2;
             position: relative;
             display: inline-block;
+            animation: gentlePulse 3s infinite alternate;
         }
 
         .couple-names::before, .couple-names::after {
@@ -575,6 +597,10 @@
                 width: 160px;
                 height: 160px;
             }
+
+            .invitation-text {
+                font-size: 1.8rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -598,6 +624,10 @@
             .ganesh-image {
                 width: 140px;
                 height: 140px;
+            }
+
+            .invitation-text {
+                font-size: 1.5rem;
             }
         }
     </style>
@@ -633,6 +663,11 @@
 
     <div class="container">
         <header>
+            <!-- NEW: Invitation Text Added Here -->
+            <div class="invitation-text">
+                We are so happy to invite you to share the joy and happiness of our wedding day
+            </div>
+            
             <div class="ganesh-container">
                 <!-- Floral frame around Ganesh -->
                 <svg class="floral-frame" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -645,10 +680,7 @@
                     <circle cx="80" cy="80" r="5" fill="#e6a8a8"/>
                 </svg>
 
-<!--                 OPTION 1: Use a relative path for local development -->
-<!--                 <img src="lordGanesh.jpg" alt="Lord Ganesh" class="ganesh-image">-->
-
-<!--                &lt;!&ndash; OPTION 2: Use an online hosted image for Vercel deployment &ndash;&gt;-->
+                <!-- OPTION 2: Use an online hosted image for Vercel deployment -->
                 <img src="https://dl.dropboxusercontent.com/scl/fi/e8o1tygrem8s281rmbuey/lordGanesh.jpg?rlkey=yzbqaf0bxsx17zigfomz0w196&st=qut32w0o" alt="Lord Ganesh" class="ganesh-image">
 
                 <div class="mantra">ॐ गं गणपतये नमः</div>
