@@ -1,817 +1,1206 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kairav & Chandani's Wedding</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --gold: #d4af37;
-            --light-gold: #f5e3c6;
-            --dark-gold: #b8860b;
-            --pink: #f9d5d5;
-            --dark-pink: #e6a8a8;
-            --brown: #5a4a42;
-            --dark-brown: #8b4513;
-        }
-
-        body {
-            font-family: 'Playfair Display', serif;
-            background: linear-gradient(135deg, var(--pink) 0%, var(--light-gold) 100%);
-            color: var(--brown);
-            overflow-x: hidden;
-            position: relative;
-            min-height: 100vh;
-        }
-
-        /* Floral Background Elements */
-        .floral-bg {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: -1;
-            pointer-events: none;
-            overflow: hidden;
-        }
-
-        .flower {
-            position: absolute;
-            opacity: 0.3;
-            animation: float 20s infinite linear;
-        }
-
-        .flower1 {
-            top: 10%;
-            left: 5%;
-            width: 80px;
-            height: 80px;
-            animation-delay: 0s;
-            color: var(--dark-gold);
-        }
-
-        .flower2 {
-            top: 70%;
-            left: 10%;
-            width: 60px;
-            height: 60px;
-            animation-delay: -5s;
-            color: var(--dark-pink);
-        }
-
-        .flower3 {
-            top: 20%;
-            right: 8%;
-            width: 70px;
-            height: 70px;
-            animation-delay: -10s;
-            color: var(--dark-gold);
-        }
-
-        .flower4 {
-            top: 80%;
-            right: 5%;
-            width: 90px;
-            height: 90px;
-            animation-delay: -15s;
-            color: var(--dark-pink);
-        }
-
-        .leaf {
-            position: absolute;
-            opacity: 0.4;
-            animation: sway 15s infinite ease-in-out;
-        }
-
-        .leaf1 {
-            top: 15%;
-            left: 15%;
-            width: 50px;
-            height: 50px;
-            animation-delay: 0s;
-            color: var(--dark-brown);
-        }
-
-        .leaf2 {
-            top: 60%;
-            left: 20%;
-            width: 40px;
-            height: 40px;
-            animation-delay: -3s;
-            color: var(--dark-brown);
-        }
-
-        .leaf3 {
-            top: 30%;
-            right: 15%;
-            width: 60px;
-            height: 60px;
-            animation-delay: -6s;
-            color: var(--dark-brown);
-        }
-
-        .leaf4 {
-            top: 75%;
-            right: 20%;
-            width: 45px;
-            height: 45px;
-            animation-delay: -9s;
-            color: var(--dark-brown);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            position: relative;
-            z-index: 1;
-            animation: fadeIn 2s ease-in;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Header Styles */
-        header {
-            text-align: center;
-            padding: 40px 20px;
-            position: relative;
-        }
-
-        .invitation-text {
-            font-family: 'Dancing Script', cursive;
-            font-size: 2.2rem;
-            color: var(--dark-gold);
-            margin-bottom: 30px;
-            line-height: 1.4;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-            animation: gentlePulse 4s infinite alternate;
-        }
-
-        @keyframes gentlePulse {
-            from { transform: scale(1); }
-            to { transform: scale(1.03); }
-        }
-
-        .ganesh-container {
-            margin-bottom: 20px;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .ganesh-image {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 5px solid var(--gold);
-            box-shadow: 0 0 25px rgba(212, 175, 55, 0.5);
-            margin-bottom: 15px;
-            background-color: var(--light-gold);
-            padding: 10px;
-        }
-
-        .floral-frame {
-            position: absolute;
-            width: 220px;
-            height: 220px;
-            top: -20px;
-            z-index: -1;
-            opacity: 0.7;
-        }
-
-        .mantra {
-            font-family: 'Roboto', sans-serif;
-            font-size: 18px;
-            color: var(--dark-brown);
-            margin-top: 10px;
-            font-style: italic;
-            position: relative;
-            display: inline-block;
-        }
-
-        .mantra::before, .mantra::after {
-            content: "❧";
-            margin: 0 15px;
-            color: var(--dark-gold);
-        }
-
-        .couple-names {
-            font-family: 'Dancing Script', cursive;
-            font-size: 4.5rem;
-            color: var(--dark-gold);
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-            margin: 20px 0;
-            line-height: 1.2;
-            position: relative;
-            display: inline-block;
-            animation: gentlePulse 3s infinite alternate;
-        }
-
-        .couple-names::before, .couple-names::after {
-            content: "✿";
-            font-size: 2rem;
-            margin: 0 20px;
-            color: var(--dark-pink);
-            position: relative;
-            top: -10px;
-        }
-
-        .subtitle {
-            font-size: 1.5rem;
-            color: var(--dark-brown);
-            letter-spacing: 3px;
-            margin-bottom: 30px;
-            position: relative;
-            display: inline-block;
-        }
-
-        .subtitle::after {
-            content: "";
-            position: absolute;
-            bottom: -10px;
-            left: 25%;
-            width: 50%;
-            height: 2px;
-            background: linear-gradient(to right, transparent, var(--dark-gold), transparent);
-        }
-
-        /* Countdown Timer */
-        .countdown-container {
-            background: rgba(255, 255, 255, 0.7);
-            border-radius: 15px;
-            padding: 25px;
-            margin: 30px auto;
-            max-width: 700px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            border: 2px solid var(--gold);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .countdown-container::before {
-            content: "";
-            position: absolute;
-            top: -50px;
-            right: -50px;
-            width: 100px;
-            height: 100px;
-            background: var(--pink);
-            border-radius: 50%;
-            opacity: 0.3;
-        }
-
-        .countdown-container::after {
-            content: "";
-            position: absolute;
-            bottom: -30px;
-            left: -30px;
-            width: 80px;
-            height: 80px;
-            background: var(--light-gold);
-            border-radius: 50%;
-            opacity: 0.3;
-        }
-
-        .countdown-title {
-            font-size: 1.8rem;
-            color: var(--dark-gold);
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .countdown {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .countdown-item {
-            text-align: center;
-            background: linear-gradient(135deg, var(--light-gold) 0%, var(--pink) 100%);
-            border-radius: 10px;
-            padding: 15px;
-            min-width: 100px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-            position: relative;
-            z-index: 2;
-        }
-
-        .countdown-item:hover {
-            transform: translateY(-5px);
-        }
-
-        .countdown-item::before {
-            content: "❀";
-            position: absolute;
-            top: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: var(--dark-pink);
-            font-size: 1.2rem;
-        }
-
-        .countdown-number {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: var(--dark-gold);
-        }
-
-        .countdown-label {
-            font-size: 1rem;
-            color: var(--dark-brown);
-            margin-top: 5px;
-        }
-
-        /* Events Section */
-        .events-section {
-            margin: 50px 0;
-            position: relative;
-        }
-
-        .section-title {
-            font-family: 'Dancing Script', cursive;
-            font-size: 3rem;
-            text-align: center;
-            color: var(--dark-gold);
-            margin-bottom: 40px;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: "";
-            position: absolute;
-            bottom: -10px;
-            left: 40%;
-            width: 20%;
-            height: 3px;
-            background: linear-gradient(to right, transparent, var(--dark-gold), transparent);
-        }
-
-        .events-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-        }
-
-        .event-card {
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 15px;
-            padding: 25px;
-            text-align: center;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border-top: 5px solid var(--gold);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .event-card::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(to right, var(--gold), var(--dark-pink), var(--gold));
-        }
-
-        .event-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        .event-icon {
-            font-size: 2.5rem;
-            color: var(--dark-gold);
-            margin-bottom: 15px;
-        }
-
-        .event-name {
-            font-size: 1.8rem;
-            color: var(--dark-gold);
-            margin-bottom: 15px;
-            font-family: 'Dancing Script', cursive;
-        }
-
-        .event-date {
-            font-size: 1.3rem;
-            color: var(--dark-brown);
-            margin-bottom: 10px;
-            font-weight: 500;
-        }
-
-        .event-details {
-            font-size: 1.1rem;
-            color: var(--brown);
-            line-height: 1.6;
-        }
-
-        /* Venue Section */
-        .venue-section {
-            margin: 50px 0;
-            text-align: center;
-            position: relative;
-        }
-
-        .venue-details {
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 15px;
-            padding: 30px;
-            max-width: 800px;
-            margin: 0 auto;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            border: 2px solid var(--gold);
-            position: relative;
-        }
-
-        .venue-details::before {
-            content: "❁";
-            position: absolute;
-            top: -15px;
-            left: -15px;
-            width: 30px;
-            height: 30px;
-            background: var(--light-gold);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            color: var(--dark-gold);
-        }
-
-        .venue-details::after {
-            content: "❁";
-            position: absolute;
-            bottom: -15px;
-            right: -15px;
-            width: 30px;
-            height: 30px;
-            background: var(--pink);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            color: var(--dark-gold);
-        }
-
-        .venue-name {
-            font-size: 2rem;
-            color: var(--dark-gold);
-            margin-bottom: 15px;
-        }
-
-        .venue-address {
-            font-size: 1.2rem;
-            color: var(--brown);
-            margin-bottom: 25px;
-            line-height: 1.6;
-        }
-
-        .map-button {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--gold) 0%, var(--dark-gold) 100%);
-            color: white;
-            padding: 12px 30px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-size: 1.2rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .map-button::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: 0.5s;
-        }
-
-        .map-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.6);
-        }
-
-        .map-button:hover::before {
-            left: 100%;
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 30px 20px;
-            margin-top: 50px;
-            border-top: 1px solid rgba(212, 175, 55, 0.3);
-            position: relative;
-        }
-
-        .footer-text {
-            font-size: 1.1rem;
-            color: var(--dark-brown);
-        }
-
-        .floral-divider {
-            margin: 20px 0;
-            font-size: 1.5rem;
-            color: var(--dark-gold);
-            letter-spacing: 10px;
-        }
-
-        /* Animations */
-        @keyframes float {
-            0% {
-                transform: translateY(0) rotate(0deg);
-            }
-            50% {
-                transform: translateY(-20px) rotate(180deg);
-            }
-            100% {
-                transform: translateY(0) rotate(360deg);
-            }
-        }
-
-        @keyframes sway {
-            0% {
-                transform: rotate(0deg);
-            }
-            50% {
-                transform: rotate(5deg);
-            }
-            100% {
-                transform: rotate(0deg);
-            }
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .couple-names {
-                font-size: 3rem;
-            }
-
-            .couple-names::before, .couple-names::after {
-                font-size: 1.5rem;
-                margin: 0 10px;
-            }
-
-            .countdown {
-                flex-wrap: wrap;
-            }
-
-            .countdown-item {
-                min-width: 80px;
-            }
-
-            .countdown-number {
-                font-size: 2rem;
-            }
-
-            .floral-frame {
-                width: 200px;
-                height: 200px;
-            }
-
-            .ganesh-image {
-                width: 160px;
-                height: 160px;
-            }
-
-            .invitation-text {
-                font-size: 1.8rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .couple-names {
-                font-size: 2.5rem;
-            }
-
-            .section-title {
-                font-size: 2.5rem;
-            }
-
-            .event-name {
-                font-size: 1.5rem;
-            }
-
-            .floral-frame {
-                width: 180px;
-                height: 180px;
-            }
-
-            .ganesh-image {
-                width: 140px;
-                height: 140px;
-            }
-
-            .invitation-text {
-                font-size: 1.5rem;
-            }
-        }
-    </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Kairav (Kanhaiya) & Chandani — Wedding</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Roboto:wght@300,400,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+/* ---------- Base ---------- */
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --gold:#d4af37; --light-gold:#f5e3c6; --dark-gold:#b8860b;
+  --pink:#f9d5d5; --dark-pink:#e6a8a8; --brown:#5a4a42; --card-bg: rgba(255,255,255,0.92);
+  --glass: rgba(255,255,255,0.18);
+  --glass-border: rgba(255,255,255,0.35);
+  --accent:#c76b9f;
+  --venue-fallback:#f7efe6;
+  --shadow: 0 14px 40px rgba(0,0,0,0.08);
+  --bg-anim-duration: 18s;
+  --default-volume: 0.45;
+}
+html,body{height:100%}
+body{
+  font-family:"Playfair Display",serif;
+  background: linear-gradient(135deg,var(--pink) 0%,var(--light-gold) 100%);
+  color:var(--brown);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  min-height:100vh;
+  padding-bottom:60px;
+  overflow-x:hidden;
+  position:relative;
+}
+
+/* Animated gradient behind content */
+.bg-animated {
+  position:fixed;
+  inset:0;
+  z-index:0;
+  background: radial-gradient(circle at 20% 20%, rgba(255,230,200,0.9), transparent 8%),
+              radial-gradient(circle at 80% 80%, rgba(249,213,213,0.8), transparent 8%),
+              linear-gradient(135deg,var(--pink),var(--light-gold));
+  filter: blur(10px) saturate(1.05);
+  animation: bgShift var(--bg-anim-duration) infinite alternate ease-in-out;
+  opacity:0.95;
+  pointer-events:none;
+}
+@keyframes bgShift {
+  0% { transform: scale(1) translateY(0) rotate(0deg); filter: blur(10px) saturate(1); }
+  50% { transform: scale(1.03) translateY(-10px) rotate(.5deg); filter: blur(12px) saturate(1.05); }
+  100% { transform: scale(1) translateY(0) rotate(0deg); filter: blur(10px) saturate(1); }
+}
+
+/* floating petals/confetti */
+.petal {
+  position:fixed;
+  width:12px;height:12px;border-radius:50%;
+  background:linear-gradient(135deg,#ffd9b3,#f7c6c6);
+  opacity:0.85;
+  transform:translate3d(0, -100vh, 0);
+  pointer-events:none;
+  z-index:0;
+  will-change:transform,opacity;
+  filter: drop-shadow(0 6px 10px rgba(212,175,55,0.06));
+}
+
+/* ---------- Container ---------- */
+.container{max-width:1200px;margin:0 auto;padding:22px;position:relative;z-index:2}
+
+/* ---------- Header (updated: single name line) ---------- */
+header{text-align:center;padding:36px 18px; position:relative; overflow:visible}
+.invitation-text{font-family:'Dancing Script',cursive;font-size:2rem;color:var(--dark-gold);margin-bottom:18px; transform-origin:center; animation:fadeUp .9s ease both 0.2s}
+.ganesh-container{display:flex;flex-direction:column;align-items:center;margin-bottom:12px; position:relative}
+.ganesh-image{
+  width:160px;height:160px;border-radius:50%;object-fit:cover;border:5px solid var(--gold);
+  box-shadow:0 12px 30px rgba(0,0,0,0.12);background:var(--light-gold);padding:6px;
+  transform-origin:center;
+  transition: transform .6s cubic-bezier(.2,.9,.25,1);
+  animation:ganeshFloat 6s ease-in-out infinite;
+}
+@keyframes ganeshFloat { 0%{transform:translateY(0) rotate(-1deg)} 50%{transform:translateY(-6px) rotate(1deg)} 100%{transform:translateY(0) rotate(-1deg)} }
+.ganesh-image:hover{ transform:scale(1.06) rotate(0deg) }
+
+/* subtle halo glow behind ganesh */
+.ganesh-container::before{
+  content:""; position:absolute; inset:auto; width:220px; height:220px; border-radius:50%;
+  background: radial-gradient(circle, rgba(255,240,200,0.95), rgba(255,255,255,0.05));
+  z-index:-1; top:-8px; filter: blur(20px);
+}
+
+/* mantra */
+.mantra{font-family:Roboto,sans-serif;font-size:15px;color:var(--brown);margin-top:8px;font-style:italic; opacity:0.95}
+
+/* Couple name — single line with small nickname */
+.couple-names{
+  font-family:'Dancing Script',cursive;
+  font-size:3.4rem;
+  color:var(--dark-gold);
+  margin-top:14px;
+  letter-spacing:1px;
+  display:inline-block;
+  line-height:1;
+  text-shadow: 0 6px 20px rgba(212,175,55,0.06);
+  animation:fadeUp .9s ease both 0.25s;
+}
+
+/* nickname small, same script style but smaller and vertically nudged */
+.couple-names .nickname-small{
+  font-family:'Dancing Script',cursive;
+  font-size:1.0rem;
+  color:var(--dark-gold);
+  margin-left:8px;
+  vertical-align:baseline;
+  display:inline-block;
+  transform: translateY(-8px);
+  opacity:0.95;
+}
+
+/* subtitle (date) */
+.subtitle{margin-top:6px;font-size:1.05rem;color:var(--brown);letter-spacing:2px; animation:fadeUp .9s ease both 0.3s}
+
+/* small intro shimmer line */
+.header-shimmer{height:3px;width:120px;margin:18px auto;border-radius:999px;background:linear-gradient(90deg,rgba(212,175,55,0.9),rgba(198,107,159,0.8));box-shadow:0 6px 20px rgba(198,107,159,0.06); opacity:0.95; transform-origin:center; animation:shimmer 2.4s linear infinite;}
+@keyframes shimmer { 0%{transform:scaleX(.6)}50%{transform:scaleX(1.05)}100%{transform:scaleX(.6)} }
+@keyframes fadeUp { from{opacity:0; transform:translateY(10px)} to{opacity:1; transform:translateY(0)} }
+
+/* ---------- Countdown ---------- */
+.countdown-container{margin:28px auto;max-width:900px;padding:22px;border-radius:18px;background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.9));box-shadow:var(--shadow);border:2px solid rgba(212,175,55,0.18);position:relative;overflow:visible}
+.countdown-title{font-size:1.5rem;color:var(--dark-gold);text-align:center;margin-bottom:16px;font-weight:600; display:flex;align-items:center;justify-content:center;gap:10px}
+.countdown{display:flex;gap:18px;justify-content:center;align-items:center;flex-wrap:wrap;padding:6px 12px;}
+.countdown-item{width:140px;height:140px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-direction:column;background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.45));box-shadow: 0 8px 20px rgba(0,0,0,0.06);position:relative;transition: transform .28s cubic-bezier(.2,.9,.2,1);cursor:default;border: 1px solid rgba(0,0,0,0.03); overflow:visible;}
+.countdown-item .ring{position:absolute; inset:8px;border-radius:50%;background:conic-gradient(var(--dark-gold) 0deg, transparent 0);-webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 14px), black calc(100% - 14px));mask: radial-gradient(farthest-side, transparent calc(100% - 14px), black calc(100% - 14px));filter: drop-shadow(0 3px 6px rgba(212,175,55,0.15));transition: background .3s linear, transform .4s ease;z-index:1; transform-origin:center;}
+.countdown-item .inner{position:relative; z-index:2; text-align:center; pointer-events:none;}
+.countdown-number{font-size:2.0rem;font-weight:800;color:var(--dark-gold);letter-spacing:1px}
+.countdown-label{font-size:0.95rem;color:var(--brown);margin-top:6px; font-weight:500}
+.countdown-item:hover{ transform: translateY(-8px) scale(1.03); box-shadow:0 18px 40px rgba(0,0,0,0.12) }
+.sparkle{position:absolute; width:8px; height:8px; border-radius:50%; background:transparent; box-shadow: 0 0 12px rgba(255,255,255,0.6); z-index:3; opacity:0.9;}
+.sparkle.one{ top:18px; right:22px; transform:rotate(20deg) }
+.sparkle.two{ bottom:18px; left:20px; transform:rotate(-12deg) }
+
+/* animate ring pulse every second for seconds ring */
+.pulse { animation: ringPulse .9s ease; }
+@keyframes ringPulse { 0%{transform:scale(1)}50%{transform:scale(1.03)}100%{transform:scale(1)} }
+
+/* ---------- Events: layout with wedding center and vidai below ---------- */
+.events-section{margin:40px 0}
+.section-title{font-family:'Dancing Script',cursive;font-size:2.6rem;text-align:center;color:var(--dark-gold);margin-bottom:18px; position:relative}
+
+/* grid that places two small cards top-left/top-right, big center, and vidai below center */
+.events-grid {
+  display: grid;
+  grid-template-columns: 1fr 480px 1fr;
+  grid-template-rows: auto 1fr;
+  gap:20px;
+  align-items:start;
+}
+
+/* grid placement */
+.card-haldi { grid-column: 1 / 2; grid-row: 1 / 2; }
+.card-mantri { grid-column: 3 / 4; grid-row: 1 / 2; }
+.card-wedding { grid-column: 2 / 3; grid-row: 1 / 2; }
+.card-vidai { grid-column: 2 / 3; grid-row: 2 / 2; justify-self:center; width:100%; }
+
+/* base event card */
+.event-card{
+  background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.85));
+  border-radius:14px;
+  padding:18px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+  transition: transform .25s ease, box-shadow .25s ease;
+  position:relative;
+  border:1px solid rgba(212,175,55,0.08);
+  overflow: visible;
+}
+
+/* small cards (Haldi & Mantripuja) style slightly compact */
+.event-card.small { padding:16px; border-radius:12px; }
+
+/* icon, name, date, details */
+.event-icon{font-size:28px;color:var(--dark-gold);display:inline-block;margin-bottom:8px}
+.event-name{font-family:'Dancing Script',cursive;font-size:1.6rem;color:var(--dark-gold);margin-bottom:6px}
+.event-date{font-size:1rem;color:var(--brown);font-weight:600;margin-bottom:8px}
+.event-details{font-size:0.98rem;color:var(--brown);line-height:1.5;}
+
+/* hover lift */
+.event-card:hover{ transform: translateY(-10px); box-shadow: 0 20px 50px rgba(0,0,0,0.12) }
+
+/* --- highlight (main wedding card) --- */
+.event-card.highlight{
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+  border: none;
+  background: linear-gradient(180deg, rgba(255,250,240,1), rgba(255,244,230,1));
+  box-shadow: 0 18px 60px rgba(212,175,55,0.18);
+  padding:22px;
+  border-radius:16px;
+  position:relative;
+  overflow:visible;
+  transform-origin:center;
+  animation:cardEntrance .9s cubic-bezier(.2,.9,.25,1) both .35s;
+}
+@keyframes cardEntrance { from{opacity:0; transform:translateY(12px) scale(.98)} to{opacity:1; transform:translateY(0) scale(1)} }
+
+/* glowing border */
+.event-card.highlight::after{
+  content:"";
+  position:absolute;
+  inset:-4px;
+  border-radius:18px;
+  background:linear-gradient(90deg, rgba(212,175,55,0.08), rgba(198,107,159,0.04));
+  filter: blur(8px);
+  z-index:0;
+}
+
+/* ribbon badge */
+.ribbon{
+  position:absolute;
+  left:18px;
+  top:-12px;
+  background:linear-gradient(90deg,var(--gold),var(--dark-gold));
+  color:white;
+  font-weight:800;
+  padding:8px 14px;
+  border-radius:8px;
+  box-shadow:0 6px 18px rgba(212,175,55,0.22);
+  transform: rotate(-6deg);
+  z-index:3;
+  font-size:0.95rem;
+}
+
+/* golden date badge */
+.date-badge{
+  display:inline-block;
+  background:linear-gradient(180deg, var(--gold), var(--dark-gold));
+  color:white;
+  padding:8px 12px;
+  border-radius:999px;
+  font-weight:800;
+  box-shadow: 0 10px 30px rgba(212,175,55,0.16);
+  margin-top:10px;
+  font-size:1rem;
+}
+
+/* highlight title larger */
+.event-card.highlight .event-name{font-size:2.2rem; letter-spacing:0.5px; margin-bottom:6px; z-index:2; position:relative;}
+
+/* highlight details slightly bigger */
+.event-card.highlight .event-details{font-size:1.05rem; font-weight:500; color:#5a4638;}
+
+/* small utility */
+.event-cta{display:flex;gap:10px;margin-top:12px;align-items:center}
+.ics-btn{background:transparent;border:2px solid var(--dark-gold);padding:8px 12px;border-radius:999px;color:var(--dark-gold);font-weight:700;cursor:pointer; transition: all .18s ease}
+.ics-btn:hover { transform: translateY(-4px); box-shadow:0 10px 18px rgba(212,175,55,0.08); }
+
+/* responsive */
+@media(max-width:1100px){
+  .events-grid{grid-template-columns: 1fr 1fr; grid-template-rows: auto auto auto; }
+  .card-haldi { grid-column: 1 / 2; grid-row: 1 / 2; }
+  .card-mantri { grid-column: 2 / 3; grid-row: 1 / 2; }
+  .card-wedding { grid-column: 1 / 3; grid-row: 2 / 3; }
+  .card-vidai { grid-column: 1 / 3; grid-row: 3 / 4; justify-self:center; }
+  .event-card.highlight{grid-column:1 / -1}
+}
+@media(max-width:640px){
+  .events-grid{grid-template-columns:1fr;gap:14px}
+  .card-haldi,.card-mantri,.card-wedding,.card-vidai{grid-column:1 / -1}
+  .event-card.highlight .event-name{font-size:1.8rem}
+}
+
+/* ---------- Venue ---------- */
+.venue-section{margin:48px 0}
+.venue-details {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  padding: 26px;
+  max-width: 760px;
+  margin: 0 auto;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+  border: 2px solid var(--gold);
+  text-align: center;
+}
+.venue-name { font-size: 1.8rem; color: var(--dark-gold); margin-bottom:10px; font-weight:800; }
+.venue-address { font-size:1.05rem; color:var(--brown); margin-bottom:18px; line-height:1.6; }
+.map-button { display:inline-block; background: linear-gradient(135deg, var(--gold) 0%, var(--dark-gold) 100%); color: white; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-size: 1rem; font-weight: 600; box-shadow: 0 8px 24px rgba(212,175,55,0.25); }
+
+/* ---------- Side play button (floating) ---------- */
+.side-play{
+  position:fixed;
+  right:18px;
+  top:50%;
+  transform:translateY(-50%);
+  z-index:120;
+  width:54px;
+  height:54px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: linear-gradient(135deg,#ffd9b3,#c76b9f);
+  color:white;
+  box-shadow:0 18px 40px rgba(0,0,0,0.18);
+  border:none;
+  cursor:pointer;
+  font-size:18px;
+  transition: transform .14s ease, box-shadow .14s ease;
+}
+.side-play:hover{ transform:translateY(-50%) scale(1.06); box-shadow:0 22px 48px rgba(0,0,0,0.22); }
+@media(max-width:520px){ .side-play{ right:12px; width:48px; height:48px; } }
+
+/* ---------- Wishes & Footer ---------- */
+.wishes-section{max-width:900px;margin:30px auto;background:var(--card-bg);padding:16px;border-radius:12px;border:1px solid rgba(212,175,55,0.12); position:relative}
+.input, textarea{width:100%;padding:10px;border-radius:8px;border:1px solid #e6e0d6;font-size:1rem;font-family:Roboto,sans-serif}
+.small-input{width:260px;max-width:100%}
+.btn, .btn:active{cursor:pointer}
+.btn{background:linear-gradient(135deg,var(--gold),var(--dark-gold));color:white;padding:10px 16px;border-radius:999px;border:none;font-weight:700;transition:transform .15s ease}
+.btn:active{transform:translateY(1px)}
+.wish-list{margin-top:12px;display:flex;flex-direction:column;gap:8px}
+.wish-item{background:linear-gradient(180deg,rgba(249,213,213,0.9),rgba(245,227,198,0.9));padding:10px;border-radius:8px;border:1px solid rgba(0,0,0,0.03); animation:wishIn .36s ease both}
+.pending-item{background:linear-gradient(180deg,rgba(240,240,240,0.95),rgba(250,245,240,0.95));padding:10px;border-radius:8px;border:1px dashed rgba(120,120,120,0.12);}
+.admin-panel{position:fixed;right:18px;top:18px;z-index:250}
+.admin-btn{background:linear-gradient(135deg,#fff,#f6f6f6);border:2px solid rgba(0,0,0,0.06);padding:8px 10px;border-radius:10px;box-shadow:0 8px 20px rgba(0,0,0,0.08);cursor:pointer}
+.admin-panel .count{font-weight:800;color:var(--dark-gold);margin-left:8px}
+.pending-list{max-height:320px;overflow:auto;display:flex;flex-direction:column;gap:8px;margin-top:8px}
+.pending-actions{display:flex;gap:8px;margin-top:8px}
+.approve-btn{background:linear-gradient(135deg,#9ae6b4,#68d391);border:none;padding:8px 10px;border-radius:8px;cursor:pointer}
+.reject-btn{background:linear-gradient(135deg,#feb2b2,#f56565);border:none;padding:8px 10px;border-radius:8px;cursor:pointer}
+.footer-text{font-size:1rem;color:var(--brown);text-align:center;padding-top:18px}
+
+/* small floating RSVP button */
+.rsvp-fab{ position:fixed; right:22px; bottom:22px; z-index:50; width:64px;height:64px;border-radius:50%; display:flex;align-items:center;justify-content:center; box-shadow:0 18px 50px rgba(0,0,0,0.18); background:linear-gradient(135deg,var(--accent),var(--dark-gold)); color:white; font-size:20px; cursor:pointer; border:none; transition:transform .18s ease }
+.rsvp-fab:hover{ transform:translateY(-6px) }
+
+/* RSVP Modal */
+.modal-backdrop{ position:fixed; inset:0; background:rgba(0,0,0,0.45); z-index:60; display:none; align-items:center; justify-content:center; padding:18px }
+.modal{ width:100%; max-width:740px; background:white; border-radius:12px; padding:18px; box-shadow:0 28px 80px rgba(0,0,0,0.32) }
+.modal h3{ font-family:'Dancing Script',cursive; font-size:1.8rem; color:var(--dark-gold); margin-bottom:8px }
+.modal label{ font-weight:600; color:var(--brown); display:block; margin-top:10px; margin-bottom:6px }
+
+.admin-tabs{display:flex;gap:8px;margin-top:12px}
+.admin-tab{padding:8px 12px;border-radius:8px;cursor:pointer;border:1px solid rgba(0,0,0,0.06);background:#fafafa}
+.admin-tab.active{background:linear-gradient(90deg,var(--gold),var(--dark-gold));color:white;border-color:rgba(0,0,0,0.06);font-weight:700}
+
+.approved-list{max-height:320px;overflow:auto;display:flex;flex-direction:column;gap:8px;margin-top:8px}
+
+.approved-actions{display:flex;gap:8px; margin-top:8px}
+.hide-btn{background:linear-gradient(135deg,#f6ad55,#ed8936);border:none;padding:8px 10px;border-radius:8px;cursor:pointer;color:white}
+.unhide-btn{background:linear-gradient(135deg,#9ae6b4,#68d391);border:none;padding:8px 10px;border-radius:8px;cursor:pointer;color:#0b3}
+.delete-btn{background:linear-gradient(135deg,#feb2b2,#f56565);border:none;padding:8px 10px;border-radius:8px;cursor:pointer;color:white}
+
+/* accessibility focus */
+:focus{ outline:3px solid rgba(198,107,159,0.18); outline-offset:3px; }
+
+@media(max-width:480px){ .petal{ display:none } .rsvp-fab{ right:12px; bottom:12px; width:56px; height:56px } }
+</style>
 </head>
 <body>
-    <!-- Floral Background Elements -->
-    <div class="floral-bg">
-        <div class="flower flower1">
-            <i class="fas fa-pagelines"></i>
-        </div>
-        <div class="flower flower2">
-            <i class="fas fa-seedling"></i>
-        </div>
-        <div class="flower flower3">
-            <i class="fas fa-pagelines"></i>
-        </div>
-        <div class="flower flower4">
-            <i class="fas fa-seedling"></i>
-        </div>
-        <div class="leaf leaf1">
-            <i class="fas fa-leaf"></i>
-        </div>
-        <div class="leaf leaf2">
-            <i class="fas fa-leaf"></i>
-        </div>
-        <div class="leaf leaf3">
-            <i class="fas fa-leaf"></i>
-        </div>
-        <div class="leaf leaf4">
-            <i class="fas fa-leaf"></i>
-        </div>
+  <div class="bg-animated" aria-hidden="true"></div>
+
+  <!-- many petals (will be positioned by JS) -->
+  <div id="petal-container" aria-hidden="true"></div>
+
+  <div class="container" id="mainContent">
+    <header>
+      <div class="invitation-text">We are so happy to invite you to share the joy and happiness of our wedding day</div>
+
+      <div class="ganesh-container" aria-hidden="true">
+        <img class="ganesh-image" id="ganeshImg" src="https://dl.dropboxusercontent.com/scl/fi/e8o1tygrem8s281rmbuey/lordGanesh.jpg?rlkey=yzbqaf0bxsx17zigfomz0w196&st=qut32w0o" alt="Lord Ganesh">
+        <div class="mantra">ॐ गं गणपतये नमः</div>
+      </div>
+
+      <!-- Updated: single line name with small nickname -->
+      <h1 class="couple-names">
+        Kairav <span class="nickname-small">(Kanhaiya)</span> &amp; Chandani
+      </h1>
+
+      <div class="subtitle">Together Forever • November 30, 2025</div>
+      <div class="header-shimmer" aria-hidden="true"></div>
+    </header>
+
+    <!-- Countdown -->
+    <div class="countdown-container" aria-live="polite" aria-label="Wedding countdown">
+      <h2 class="countdown-title"><i class="fas fa-star" style="color:var(--gold)"></i> Counting Down to Our Special Day</h2>
+      <div class="countdown" id="countdown">
+        <div class="countdown-item" title="Days left"><div class="ring" id="ring-days" aria-hidden="true"></div><div class="inner"><div class="countdown-number" id="days">00</div><div class="countdown-label">Days</div></div></div>
+        <div class="countdown-item" title="Hours left"><div class="ring" id="ring-hours" aria-hidden="true"></div><div class="inner"><div class="countdown-number" id="hours">00</div><div class="countdown-label">Hours</div></div></div>
+        <div class="countdown-item" title="Minutes left"><div class="ring" id="ring-minutes" aria-hidden="true"></div><div class="inner"><div class="countdown-number" id="minutes">00</div><div class="countdown-label">Minutes</div></div></div>
+        <div class="countdown-item" title="Seconds left"><div class="ring" id="ring-seconds" aria-hidden="true"></div><div class="inner"><div class="countdown-number" id="seconds">00</div><div class="countdown-label">Seconds</div></div></div>
+      </div>
     </div>
 
-    <div class="container">
-        <header>
-            <!-- NEW: Invitation Text Added Here -->
-            <div class="invitation-text">
-                We are so happy to invite you to share the joy and happiness of our wedding day
-            </div>
-            
-            <div class="ganesh-container">
-                <!-- Floral frame around Ganesh -->
-                <svg class="floral-frame" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M20,50 Q20,20 50,20 Q80,20 80,50 Q80,80 50,80 Q20,80 20,50"
-                          fill="none" stroke="#d4af37" stroke-width="2"
-                          stroke-dasharray="5,5"/>
-                    <circle cx="20" cy="20" r="5" fill="#e6a8a8"/>
-                    <circle cx="80" cy="20" r="5" fill="#e6a8a8"/>
-                    <circle cx="20" cy="80" r="5" fill="#e6a8a8"/>
-                    <circle cx="80" cy="80" r="5" fill="#e6a8a8"/>
-                </svg>
+    <!-- Events with wedding center and vidai below -->
+    <section class="events-section" aria-label="Wedding events">
+      <h2 class="section-title">Wedding Events</h2>
 
-                <!-- OPTION 2: Use an online hosted image for Vercel deployment -->
-                <img src="https://dl.dropboxusercontent.com/scl/fi/e8o1tygrem8s281rmbuey/lordGanesh.jpg?rlkey=yzbqaf0bxsx17zigfomz0w196&st=qut32w0o" alt="Lord Ganesh" class="ganesh-image">
+      <div class="events-grid" role="list">
+        <!-- Haldi (top-left) -->
+        <article class="event-card small card-haldi" role="listitem" aria-label="Haldi and Urdi on November 26">
+          <div class="event-icon"><i class="fas fa-hand-holding-water" aria-hidden="true"></i></div>
+          <h3 class="event-name">Haldi &amp; Urdi</h3>
+          <div class="event-date">November 26, 2025</div>
+          <div class="event-details">A traditional ceremony where turmeric paste is applied to the bride and groom for blessings and purification.</div>
+        </article>
 
-                <div class="mantra">ॐ गं गणपतये नमः</div>
-            </div>
-            <h1 class="couple-names">Kairav & Chandani</h1>
-            <div class="subtitle">Together Forever • November 30, 2025</div>
-        </header>
+        <!-- Mantripuja (top-right) -->
+        <article class="event-card small card-mantri" role="listitem" aria-label="Mantripuja on November 29">
+          <div class="event-icon"><i class="fas fa-pray" aria-hidden="true"></i></div>
+          <h3 class="event-name">Mantripuja</h3>
+          <div class="event-date">November 29, 2025</div>
+          <div class="event-details">A sacred ceremony to seek blessings from the deities for a prosperous married life.</div>
+        </article>
 
-        <!-- Countdown Timer -->
-        <div class="countdown-container">
-            <h2 class="countdown-title">Counting Down to Our Special Day</h2>
-            <div class="countdown">
-                <div class="countdown-item">
-                    <div class="countdown-number" id="days">00</div>
-                    <div class="countdown-label">Days</div>
-                </div>
-                <div class="countdown-item">
-                    <div class="countdown-number" id="hours">00</div>
-                    <div class="countdown-label">Hours</div>
-                </div>
-                <div class="countdown-item">
-                    <div class="countdown-number" id="minutes">00</div>
-                    <div class="countdown-label">Minutes</div>
-                </div>
-                <div class="countdown-item">
-                    <div class="countdown-number" id="seconds">00</div>
-                    <div class="countdown-label">Seconds</div>
-                </div>
-            </div>
-        </div>
+        <!-- Wedding Ceremony (center, highlighted) -->
+        <article class="event-card highlight card-wedding" role="listitem" aria-label="Wedding Ceremony - Main day November 30 2025">
+          <div class="ribbon" aria-hidden="true">Main Day — 30 Nov 2025</div>
 
-        <!-- Events Section -->
-        <section class="events-section">
-            <h2 class="section-title">Wedding Events</h2>
-            <div class="events-container">
-                <div class="event-card">
-                    <div class="event-icon">
-                        <i class="fas fa-hand-holding-water"></i>
-                    </div>
-                    <h3 class="event-name">Haldi & Urdi</h3>
-                    <div class="event-date">November 26, 2025</div>
-                    <div class="event-details">
-                        A traditional ceremony where turmeric paste is applied to the bride and groom for blessings and purification.
-                    </div>
-                </div>
-                <div class="event-card">
-                    <div class="event-icon">
-                        <i class="fas fa-pray"></i>
-                    </div>
-                    <h3 class="event-name">Mantripuja</h3>
-                    <div class="event-date">November 29, 2025</div>
-                    <div class="event-details">
-                        A sacred ceremony to seek blessings from the deities for a prosperous married life.
-                    </div>
-                </div>
-                <div class="event-card">
-                    <div class="event-icon">
-                        <i class="fas fa-heart"></i>
-                    </div>
-                    <h3 class="event-name">Wedding Ceremony</h3>
-                    <div class="event-date">November 30, 2025 • 7:00 PM</div>
-                    <div class="event-details">
-                        The sacred union of Kairav and Chandani as they embark on their journey of togetherness.
-                    </div>
-                </div>
-                <div class="event-card">
-                    <div class="event-icon">
-                        <i class="fas fa-angel"></i>
-                    </div>
-                    <h3 class="event-name">Vidai</h3>
-                    <div class="event-date">December 1, 2025</div>
-                    <div class="event-details">
-                        The emotional farewell as the bride leaves her parental home to start a new life with her husband.
-                    </div>
-                </div>
-            </div>
-        </section>
+          <div style="position:relative; z-index:2;">
+            <div class="event-icon" aria-hidden="true" style="font-size:38px"><i class="fas fa-heart"></i></div>
+            <h3 class="event-name">Wedding Ceremony</h3>
+            <div class="event-date" style="margin-bottom:6px">November 30, 2025 • 7:00 PM</div>
 
-        <!-- Venue Section -->
-        <section class="venue-section">
-            <h2 class="section-title">Wedding Venue</h2>
-            <div class="venue-details">
-                <h3 class="venue-name">Gangabai Jagannath Garden Hall</h3>
-                <div class="venue-address">
-                    Bhoir Pada, Phool Pada Road,<br>
-                    Virar (East) - 401305
-                </div>
-                <a href="https://maps.app.goo.gl/NATR5hHxtSQhPNL68" target="_blank" class="map-button">View on Map</a>
-            </div>
-        </section>
+            <div class="date-badge" aria-hidden="true">Celebrate • 30 Nov</div>
 
-        <!-- Footer -->
-        <footer>
-            <div class="floral-divider">❦ ❦ ❦</div>
-            <div class="footer-text">
-                With the blessings of our families<br>
-                Virendra & Kiran Vishwakarma<br>
-                Pyarelal & Nisha Vishwakarma
+            <div class="event-details" style="margin-top:12px">
+              The sacred union of <strong>Kairav &amp; Chandani</strong> as they embark on their journey of togetherness. Join us for an evening of blessings, music, and celebration under the starlit garden.
             </div>
-        </footer>
+
+            <div class="event-cta" style="margin-top:14px">
+              <button class="ics-btn" id="addCalendarBtn" title="Add event to your calendar"><i class="fas fa-calendar-plus"></i> Add to Calendar</button>
+              <a class="map-button" href="https://maps.app.goo.gl/NATR5hHxtSQhPNL68" target="_blank" rel="noopener noreferrer" style="margin-left:8px"><i class="fas fa-map-marker-alt"></i> View Map</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Vidai below wedding, centered -->
+        <article class="event-card small card-vidai" role="listitem" aria-label="Vidai on December 1">
+          <div class="event-icon"><i class="fas fa-angel" aria-hidden="true"></i></div>
+          <h3 class="event-name">Vidai</h3>
+          <div class="event-date">December 1, 2025</div>
+          <div class="event-details">The emotional farewell as the bride leaves her parental home to start a new life with her husband.</div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Venue: restored original simple style (centered) -->
+    <section class="venue-section" aria-label="Wedding venue">
+      <h2 class="section-title">Wedding Venue</h2>
+      <div class="venue-details" role="region" aria-labelledby="venue-title">
+        <div class="venue-name" id="venue-title">Gangabai Jagannath Garden Hall</div>
+        <div class="venue-address">Bhoir Pada, Phool Pada Road,<br>Virar (East) - 401305</div>
+        <a class="map-button" href="https://maps.app.goo.gl/NATR5hHxtSQhPNL68" target="_blank" rel="noopener noreferrer">View on Map</a>
+      </div>
+    </section>
+
+    <!-- Wishes (moderated) -->
+    <section class="wishes-section" aria-label="Send Wishes">
+      <h3 style="font-family:'Dancing Script',cursive;color:var(--dark-gold);margin-bottom:8px">Send Your Wishes to Kairav (Kanhaiya) &amp; Chandani</h3>
+      <p style="font-size:0.95rem;color:var(--brown);margin-bottom:10px">Write your name and message below. Wishes are queued for approval — only approved (and not hidden) wishes will be visible on this page.</p>
+
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:8px">
+        <input id="wishName" class="input small-input" type="text" placeholder="Your name (optional)">
+        <input id="wishRelation" class="input small-input" type="text" placeholder="Relation (friend, cousin...)">
+      </div>
+      <textarea id="wishMessage" rows="4" class="input" placeholder="Write your heartfelt wish for Kairav & Chandani..."></textarea>
+
+      <div style="margin-top:10px;display:flex;gap:10px;flex-wrap:wrap">
+        <button id="sendMailBtn" class="btn"><i class="fas fa-envelope"></i> Send Wish via Email</button>
+        <button id="sendWhatsappBtn" class="btn"><i class="fab fa-whatsapp"></i> Send Wish via WhatsApp</button>
+        <button id="addLocalBtn" class="btn" style="background:linear-gradient(135deg,var(--dark-pink),var(--pink));color:var(--dark-brown)"><i class="fas fa-book"></i> Submit Wish (Queue for approval)</button>
+        <button id="copyBtn" class="btn" style="background:linear-gradient(135deg,#ccc,#999);color:#222"><i class="fas fa-copy"></i> Copy Mail Text</button>
+      </div>
+
+      <div id="resultHint" style="display:none;margin-top:10px;color:var(--brown)"></div>
+
+      <div style="margin-top:12px">
+        <strong style="color:var(--dark-gold)">Approved Wishes</strong>
+        <div class="wish-list" id="wishList" aria-live="polite"></div>
+      </div>
+
+      <div style="margin-top:16px">
+        <strong style="color:#666">(Admin: Pending wishes — not visible to guests)</strong>
+        <div id="pendingCount" style="font-size:0.95rem;color:var(--brown);margin-top:6px">Pending: <span id="pendingNum">0</span></div>
+      </div>
+    </section>
+
+    <footer style="margin-top:30px; z-index:2">
+      <div style="text-align:center;padding:18px;font-size:1rem;color:var(--brown)">
+        With the blessings of our families<br>
+        Virendra &amp; Kiran Vishwakarma • Pyarelal &amp; Nisha Vishwakarma
+      </div>
+    </footer>
+  </div>
+
+  <!-- small side play button (toggles the main OM player) -->
+  <button id="sidePlayBtn" class="side-play" aria-label="Play / Pause OM chant" title="Play / Pause OM chant">
+    <i id="sidePlayIcon" class="fas fa-play"></i>
+  </button>
+
+  <!-- Admin panel launcher -->
+  <div class="admin-panel" id="adminPanel">
+    <button id="openAdminBtn" class="admin-btn" title="Manage pending wishes"><i class="fas fa-shield-alt"></i> Manage <span class="count" id="adminPendingCount">0</span></button>
+  </div>
+
+  <!-- Admin modal (UPDATED: tabs for Pending / Approved + hide/unhide functionality) -->
+  <div id="adminModalBackdrop" class="modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal" role="document" aria-labelledby="adminTitle">
+      <button id="closeAdminModal" style="float:right;background:transparent;border:none;font-size:18px;cursor:pointer"><i class="fas fa-times"></i></button>
+      <h3 id="adminTitle">Manage Wishes</h3>
+      <div style="font-size:0.95rem;color:var(--brown);">Approve pending wishes, or hide/unhide approved wishes from the public page.</div>
+
+      <div class="admin-tabs" role="tablist" aria-label="Admin tabs">
+        <div id="tabPending" class="admin-tab active" role="tab" aria-selected="true">Pending</div>
+        <div id="tabApproved" class="admin-tab" role="tab" aria-selected="false">Approved</div>
+      </div>
+
+      <div id="pendingList" class="pending-list" style="margin-top:12px"></div>
+      <div id="approvedList" class="approved-list" style="margin-top:12px; display:none"></div>
+
+      <div style="display:flex;gap:8px;margin-top:12px;align-items:center">
+        <button id="closeAdmin" class="btn">Close</button>
+      </div>
     </div>
+  </div>
 
-    <script>
-        // Countdown Timer
-        function updateCountdown() {
-            const weddingDate = new Date('November 30, 2025 19:00:00').getTime();
-            const now = new Date().getTime();
-            const timeLeft = weddingDate - now;
+  <!-- RSVP floating button -->
+  <button id="openRsvp" class="rsvp-fab" aria-label="Open RSVP dialog" title="RSVP"><i class="fas fa-handshake"></i></button>
 
-            if (timeLeft < 0) {
-                document.getElementById('days').innerText = '00';
-                document.getElementById('hours').innerText = '00';
-                document.getElementById('minutes').innerText = '00';
-                document.getElementById('seconds').innerText = '00';
-                return;
-            }
+  <!-- RSVP modal -->
+  <div id="modalBackdrop" class="modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal" role="document" aria-labelledby="rsvpTitle">
+      <button id="closeModal" style="float:right;background:transparent;border:none;font-size:18px;cursor:pointer"><i class="fas fa-times"></i></button>
+      <h3 id="rsvpTitle">RSVP — We'd love to see you</h3>
+      <p class="small-muted">Tell us whether you'll join and how many seats you'll need.</p>
 
-            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+      <label for="rsvpName">Name</label>
+      <input id="rsvpName" class="input" placeholder="Your full name">
 
-            document.getElementById('days').innerText = days < 10 ? '0' + days : days;
-            document.getElementById('hours').innerText = hours < 10 ? '0' + hours : hours;
-            document.getElementById('minutes').innerText = minutes < 10 ? '0' + minutes : minutes;
-            document.getElementById('seconds').innerText = seconds < 10 ? '0' + seconds : seconds;
-        }
+      <label for="rsvpAttending">Will you attend?</label>
+      <select id="rsvpAttending" class="input" style="padding:10px">
+        <option value="yes">Yes, I'll celebrate 🎉</option>
+        <option value="no">Sorry, can't make it</option>
+        <option value="maybe">Maybe</option>
+      </select>
 
-        // Update countdown every second
-        setInterval(updateCountdown, 1000);
-        updateCountdown(); // Initial call
-    </script>
+      <label for="rsvpCount">Number of guests (including you)</label>
+      <input id="rsvpCount" class="input" type="number" value="1" min="1" max="10">
+
+      <div style="display:flex;gap:10px;margin-top:12px;align-items:center">
+        <button id="submitRsvp" class="btn"><i class="fas fa-check-circle"></i> Submit RSVP</button>
+        <div id="rsvpStatus" class="small-muted" aria-live="polite"></div>
+      </div>
+    </div>
+  </div>
+
+<script>
+/* ---------- Utility: small confetti burst (canvas-free) ---------- */
+function smallConfettiBurst(x = window.innerWidth/2, y = window.innerHeight/2, count = 20) {
+  const colors = ['#ffd27a','#f7c6c6','#ffd9b3','#c76b9f','#ffd7e0'];
+  for (let i=0;i<count;i++){
+    const el = document.createElement('div');
+    el.className = 'petal';
+    const size = 6 + Math.round(Math.random()*14);
+    el.style.width = size+'px';
+    el.style.height = Math.round(size*0.6)+'px';
+    el.style.borderRadius = (size*0.5)+'px ' + Math.round(size*0.2)+'px';
+    el.style.left = (x - size/2 + (Math.random()-0.5)*20) + 'px';
+    el.style.top = (y - size/2 + (Math.random()-0.5)*20) + 'px';
+    el.style.background = colors[Math.floor(Math.random()*colors.length)];
+    el.style.opacity = Math.random()*0.9 + 0.6;
+    el.style.transform = `translate3d(0,0,0) rotate(${Math.random()*360}deg)`;
+    el.style.transition = `transform 1.8s cubic-bezier(.2,.9,.2,1), opacity 1.6s linear`;
+    el.style.zIndex = 120;
+    document.body.appendChild(el);
+    // animate
+    requestAnimationFrame(()=> {
+      const dx = (Math.random()-0.5) * 220;
+      const dy = 120 + Math.random()*200;
+      const rot = (Math.random()-0.5)*720;
+      el.style.transform = `translate3d(${dx}px, ${dy}px, 0) rotate(${rot}deg)`;
+      el.style.opacity = 0;
+    });
+    setTimeout(()=> el.remove(), 1900);
+  }
+}
+
+/* ---------- Petals: gentle floating background pieces ---------- */
+(function seedPetals(){
+  const container = document.getElementById('petal-container');
+  if (!container) return;
+  const count = Math.min(18, Math.floor(window.innerWidth/120));
+  for (let i=0;i<count;i++){
+    const p = document.createElement('div');
+    p.className = 'petal';
+    p.style.left = Math.random()*100 + 'vw';
+    p.style.top = -Math.random()*60 - 10 + 'vh';
+    p.style.opacity = (0.4 + Math.random()*0.6);
+    p.style.transform = 'translateY(-10vh) rotate(' + (Math.random()*360) + 'deg)';
+    const size = 8 + Math.round(Math.random()*18);
+    p.style.width = size + 'px';
+    p.style.height = Math.max(6, Math.round(size*0.6)) + 'px';
+    p.style.background = ['#ffd9b3','#f7c6c6','#ffd27a','#fbe7f0'][Math.floor(Math.random()*4)];
+    container.appendChild(p);
+    animatePetal(p, 6 + Math.random()*8, Math.random()*300);
+  }
+  function animatePetal(el, duration, delay){
+    el.animate([
+      { transform: `translateY(-10vh) rotate(0deg)`, opacity: el.style.opacity },
+      { transform: `translateY(${100 + Math.random()*60}vh) rotate(${Math.random()*720 - 360}deg)`, opacity: 0.05 }
+    ], {
+      duration: duration * 1000,
+      iterations: Infinity,
+      delay: delay * 50 + Math.random()*200,
+      easing: 'linear'
+    });
+  }
+})();
+
+/* ---------- Parallax header on scroll ---------- */
+(function(){
+  const header = document.querySelector('header');
+  window.addEventListener('scroll', () => {
+    const sc = window.scrollY;
+    header.style.transform = `translateY(${Math.min(sc * 0.06, 14)}px)`;
+    header.style.filter = `saturate(${1 + Math.min(sc * 0.0006, 0.06)})`;
+  }, { passive:true });
+})();
+
+/* ---------- Countdown logic ---------- */
+(function(){
+  const weddingDate = new Date('November 30, 2025 19:00:00').getTime();
+  const elDays = document.getElementById('days');
+  const elHours = document.getElementById('hours');
+  const elMinutes = document.getElementById('minutes');
+  const elSeconds = document.getElementById('seconds');
+
+  const ringDays = document.getElementById('ring-days');
+  const ringHours = document.getElementById('ring-hours');
+  const ringMinutes = document.getElementById('ring-minutes');
+  const ringSeconds = document.getElementById('ring-seconds');
+
+  function update(){
+    const now = Date.now();
+    let diff = weddingDate - now;
+    if (diff < 0) diff = 0;
+
+    const days = Math.floor(diff / (1000*60*60*24));
+    const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+    const minutes = Math.floor((diff % (1000*60*60)) / (1000*60));
+    const seconds = Math.floor((diff % (1000*60)) / 1000);
+
+    if (elDays) elDays.textContent = String(days).padStart(2,'0');
+    if (elHours) elHours.textContent = String(hours).padStart(2,'0');
+    if (elMinutes) elMinutes.textContent = String(minutes).padStart(2,'0');
+    if (elSeconds) elSeconds.textContent = String(seconds).padStart(2,'0');
+
+    if (ringDays) {
+      const deg = Math.min(360, ((days % 365)/365*360) + 8);
+      ringDays.style.background = `conic-gradient(var(--dark-gold) ${deg}deg, transparent 0)`;
+    }
+    if (ringHours) ringHours.style.background = `conic-gradient(var(--dark-gold) ${hours/24*360}deg, transparent 0)`;
+    if (ringMinutes) ringMinutes.style.background = `conic-gradient(var(--dark-gold) ${minutes/60*360}deg, transparent 0)`;
+    if (ringSeconds) ringSeconds.style.background = `conic-gradient(var(--dark-gold) ${seconds/60*360}deg, transparent 0)`;
+
+    if (ringSeconds) {
+      ringSeconds.classList.remove('pulse');
+      void ringSeconds.offsetWidth;
+      ringSeconds.classList.add('pulse');
+      if (seconds <= 10) ringSeconds.style.filter = 'drop-shadow(0 6px 14px rgba(212,175,55,0.32))';
+      else ringSeconds.style.filter = 'drop-shadow(0 3px 6px rgba(212,175,55,0.15))';
+    }
+  }
+  setInterval(update, 1000);
+  update();
+})();
+
+/* ---------- WebAudio OM synth + player (controlled by side button) ---------- */
+(function(){
+  const sideBtn = document.getElementById('sidePlayBtn');
+  const sideIcon = document.getElementById('sidePlayIcon');
+  let audioCtx = null;
+  let masterGain = null;
+  let synthNodes = null; // {osc1, osc2, gain, lfo}
+  let isPlaying = false;
+
+  function ensureContext(){
+    if (!audioCtx){
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      masterGain = audioCtx.createGain();
+      masterGain.gain.value = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--default-volume')) || 0.45;
+      masterGain.connect(audioCtx.destination);
+    }
+  }
+
+  function startSynthLoop(){
+    if (!audioCtx) ensureContext();
+    if (!audioCtx) return;
+    if (synthNodes) return;
+
+    const ctx = audioCtx;
+    const osc1 = ctx.createOscillator();
+    const osc2 = ctx.createOscillator();
+    const gain = ctx.createGain();
+    const lfo = ctx.createOscillator();
+    const lfoGain = ctx.createGain();
+
+    osc1.type = 'sine'; osc1.frequency.value = 110;
+    osc2.type = 'sine'; osc2.frequency.value = 220;
+    osc1.detune.value = -5; osc2.detune.value = 6;
+
+    gain.gain.value = 0.0;
+    masterGain.gain.value = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--default-volume')) || 0.45;
+
+    lfo.type = 'sine'; lfo.frequency.value = 0.12; lfoGain.gain.value = 0.18;
+
+    lfo.connect(lfoGain); lfoGain.connect(gain.gain);
+    osc1.connect(gain); osc2.connect(gain);
+    gain.connect(masterGain);
+
+    osc1.start(); osc2.start(); lfo.start();
+
+    const now = ctx.currentTime;
+    gain.gain.cancelScheduledValues(now);
+    gain.gain.setValueAtTime(0.0, now);
+    gain.gain.linearRampToValueAtTime(0.6, now + 2.0);
+
+    synthNodes = { osc1, osc2, gain, lfo, lfoGain };
+  }
+
+  function stopSynthLoop(){
+    if (!synthNodes || !audioCtx) return;
+    const { osc1, osc2, gain, lfo } = synthNodes;
+    const now = audioCtx.currentTime;
+    gain.gain.cancelScheduledValues(now);
+    gain.gain.setValueAtTime(gain.gain.value, now);
+    gain.gain.linearRampToValueAtTime(0.0001, now + 1.2);
+    setTimeout(()=>{
+      try { osc1.stop(); osc2.stop(); lfo.stop(); } catch(e){}
+      synthNodes = null;
+    }, 1400);
+  }
+
+  async function togglePlay(start){
+    ensureContext();
+    if (!audioCtx) return;
+    if (typeof start === 'undefined') start = !isPlaying;
+
+    if (start){
+      try { await audioCtx.resume(); } catch(e){}
+      startSynthLoop();
+      isPlaying = true;
+      if (sideIcon) sideIcon.className = 'fas fa-pause';
+      sideBtn.setAttribute('aria-pressed','true');
+    } else {
+      stopSynthLoop();
+      isPlaying = false;
+      if (sideIcon) sideIcon.className = 'fas fa-play';
+      sideBtn.setAttribute('aria-pressed','false');
+    }
+  }
+
+  if (sideBtn) {
+    sideBtn.addEventListener('click', function(e){
+      e.preventDefault();
+      togglePlay();
+    });
+  }
+
+  const ganesh = document.getElementById('ganeshImg');
+  if (ganesh) {
+    ganesh.style.cursor = 'pointer';
+    ganesh.addEventListener('click', ()=> { if (sideBtn) sideBtn.click(); });
+    ganesh.setAttribute('title', 'Click to play/pause OM chant');
+  }
+
+  window._toggleOmPlayer = togglePlay;
+})();
+
+/* ---------- Wishes behaviour with moderation + WhatsApp ---------- */
+(function(){
+  const targetEmail = 'kaitravvishwakarma@gmail.com';
+  const sendMailBtn = document.getElementById('sendMailBtn');
+  const sendWhatsappBtn = document.getElementById('sendWhatsappBtn');
+  const addLocalBtn = document.getElementById('addLocalBtn');
+  const copyBtn = document.getElementById('copyBtn');
+  const wishList = document.getElementById('wishList');
+  const resultHint = document.getElementById('resultHint');
+  const pendingNum = document.getElementById('pendingNum');
+  const adminPendingCount = document.getElementById('adminPendingCount');
+
+  // storage keys
+  const KEY_APPROVED = 'wedding_wishes_approved_v1';
+  const KEY_PENDING = 'wedding_wishes_pending_v1';
+
+  // admin passphrase (change here if you want another). This is a simple client-side gate — not secure but convenient.
+  const ADMIN_PASSPHRASE = 'kairav';
+
+  function buildMailBody(name, relation, message){
+    const time = new Date().toLocaleString();
+    let body = '';
+    if (name) body += `From: ${name}\n`;
+    if (relation) body += `Relation: ${relation}\n`;
+    body += `Time: ${time}\n\n`;
+    body += `Message:\n${message}\n\nWarm wishes,\n(Shared via wedding invite page)`;
+    return body;
+  }
+  function escapeHtml(unsafe){
+    return String(unsafe).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#039;');
+  }
+
+  /* ---------- Approved render: only show non-hidden wishes ---------- */
+  function renderApprovedList(){
+    wishList.innerHTML = '';
+    const approved = loadApproved();
+    // only show those not hidden
+    approved.filter(w => !w.hidden).forEach(w => {
+      const div = document.createElement('div');
+      div.className = 'wish-item';
+      const title = w.name ? `<strong>${escapeHtml(w.name)}</strong>` : '<strong>Anonymous</strong>';
+      const rel = w.relation ? ` &nbsp;<em>(${escapeHtml(w.relation)})</em>` : '';
+      const timeHtml = w.time ? ` <small style="color:#333;margin-left:8px;font-size:0.85rem">— ${escapeHtml(w.time)}</small>` : '';
+      div.innerHTML = `${title}${rel}${timeHtml}<div style="margin-top:6px;white-space:pre-wrap">${escapeHtml(w.message)}</div>`;
+      wishList.appendChild(div);
+    });
+  }
+
+  function saveApproved(arr){
+    try{ localStorage.setItem(KEY_APPROVED, JSON.stringify(arr)); }catch(e){}
+  }
+  function loadApproved(){
+    try{ const v = JSON.parse(localStorage.getItem(KEY_APPROVED) || '[]'); return Array.isArray(v)? v : []; }catch(e){ return []; }
+  }
+  function savePending(arr){
+    try{ localStorage.setItem(KEY_PENDING, JSON.stringify(arr)); }catch(e){}
+    updatePendingCounts();
+  }
+  function loadPending(){
+    try{ const v = JSON.parse(localStorage.getItem(KEY_PENDING) || '[]'); return Array.isArray(v)? v : []; }catch(e){ return []; }
+  }
+
+  function updatePendingCounts(){
+    const p = loadPending();
+    pendingNum.textContent = p.length;
+    adminPendingCount.textContent = p.length;
+  }
+
+  function queueWish(name, relation, message){
+    const now = new Date().toLocaleString();
+    const pending = loadPending();
+    pending.unshift({ id: Date.now()+'' , name, relation, message, time: now });
+    savePending(pending);
+  }
+
+  // On submit: add to pending queue (not visible until approved)
+  if (addLocalBtn) addLocalBtn.addEventListener('click', function(){
+    const name = document.getElementById('wishName').value.trim();
+    const relation = document.getElementById('wishRelation').value.trim();
+    const message = document.getElementById('wishMessage').value.trim();
+    if (!message){ resultHint.style.display='block'; resultHint.textContent='Please write a message before submitting.'; return; }
+    queueWish(name, relation, message);
+    resultHint.style.display='block'; resultHint.textContent='Thank you — your wish is queued for approval.';
+    document.getElementById('wishMessage').value = '';
+    smallConfettiBurst(window.innerWidth/2, window.innerHeight/2, 14);
+  });
+
+  // Send via email: open mail client AND queue for approval
+  if (sendMailBtn) sendMailBtn.addEventListener('click', function(){
+    const name = document.getElementById('wishName').value.trim();
+    const relation = document.getElementById('wishRelation').value.trim();
+    const message = document.getElementById('wishMessage').value.trim();
+    if (!message){ resultHint.style.display='block'; resultHint.textContent='Please write a message before sending.'; return; }
+    queueWish(name, relation, message);
+    const subject = encodeURIComponent(`Wedding Wish for Kairav & Chandani — from ${name || 'Guest'}`);
+    const bodyText = buildMailBody(name, relation, message);
+    const mailto = `mailto:${targetEmail}?subject=${subject}&body=${encodeURIComponent(bodyText)}`;
+    window.location.href = mailto;
+    resultHint.style.display = 'block';
+    resultHint.textContent = 'Your wish is queued for approval and your email client should open.';
+    document.getElementById('wishMessage').value = '';
+  });
+
+  // Send via WhatsApp: open WhatsApp with message (also queue)
+  if (sendWhatsappBtn) sendWhatsappBtn.addEventListener('click', function(){
+    const name = document.getElementById('wishName').value.trim();
+    const relation = document.getElementById('wishRelation').value.trim();
+    const message = document.getElementById('wishMessage').value.trim();
+    if (!message){ resultHint.style.display='block'; resultHint.textContent='Please write a message before sending.'; return; }
+    queueWish(name, relation, message);
+    const time = new Date().toLocaleString();
+    const text = `${name? name + ' — ' : ''}${relation? '('+relation+')\n' : ''}${message}\n\nSent via wedding invite (${time})`;
+    const wa = `https://wa.me/?text=${encodeURIComponent(text)}`;
+    window.open(wa, '_blank');
+    resultHint.style.display = 'block'; resultHint.textContent = 'Your wish is queued for approval and WhatsApp should open.';
+    document.getElementById('wishMessage').value = '';
+  });
+
+  // Copy button: copies mail-like text, and queue
+  if (copyBtn) copyBtn.addEventListener('click', function(){
+    const name = document.getElementById('wishName').value.trim();
+    const relation = document.getElementById('wishRelation').value.trim();
+    const message = document.getElementById('wishMessage').value.trim();
+    if (!message){ resultHint.style.display='block'; resultHint.textContent='Please write a message to copy.'; return; }
+    queueWish(name, relation, message);
+    const body = buildMailBody(name, relation, message);
+    navigator.clipboard.writeText(`To: ${targetEmail}\nSubject: Wedding Wish for Kairav & Chandani — from ${name || 'Guest'}\n\n${body}`)
+      .then(()=> { resultHint.style.display='block'; resultHint.textContent='Mail content copied to clipboard. Wish queued for approval.'; })
+      .catch(()=> { resultHint.style.display='block'; resultHint.textContent='Unable to copy. Your browser may block clipboard access. Wish queued for approval.'; });
+    document.getElementById('wishMessage').value = '';
+  });
+
+  // load approved wishes on page load
+  (function loadApprovedWishes(){
+    renderApprovedList();
+    updatePendingCounts();
+  })();
+
+  /* ---------- Admin panel for approving/rejecting and hiding/unhiding ---------- */
+  const openAdminBtn = document.getElementById('openAdminBtn');
+  const adminModalBackdrop = document.getElementById('adminModalBackdrop');
+  const closeAdminModal = document.getElementById('closeAdminModal');
+  const closeAdmin = document.getElementById('closeAdmin');
+  const pendingListEl = document.getElementById('pendingList');
+  const approvedListEl = document.getElementById('approvedList');
+  const tabPending = document.getElementById('tabPending');
+  const tabApproved = document.getElementById('tabApproved');
+
+  function showAdminModal(){
+    adminModalBackdrop.style.display = 'flex';
+    adminModalBackdrop.setAttribute('aria-hidden','false');
+    renderPendingList();
+    renderApprovedAdminList();
+  }
+  function hideAdminModal(){
+    adminModalBackdrop.style.display = 'none';
+    adminModalBackdrop.setAttribute('aria-hidden','true');
+    openAdminBtn.focus();
+  }
+
+  if (openAdminBtn){
+    openAdminBtn.addEventListener('click', function(){
+      // ask for passphrase
+      const pass = prompt('Enter admin passphrase to manage wishes:');
+      if (!pass) return;
+      if (pass.trim() !== ADMIN_PASSPHRASE){ alert('Incorrect passphrase'); return; }
+      showAdminModal();
+    });
+  }
+  if (closeAdminModal) closeAdminModal.addEventListener('click', hideAdminModal);
+  if (closeAdmin) closeAdmin.addEventListener('click', hideAdminModal);
+  adminModalBackdrop.addEventListener('click', function(e){ if (e.target === adminModalBackdrop) hideAdminModal(); });
+
+  // Tab switching
+  function setActiveTab(tab){
+    if (tab === 'pending'){
+      tabPending.classList.add('active'); tabPending.setAttribute('aria-selected','true');
+      tabApproved.classList.remove('active'); tabApproved.setAttribute('aria-selected','false');
+      pendingListEl.style.display = 'flex';
+      approvedListEl.style.display = 'none';
+    } else {
+      tabApproved.classList.add('active'); tabApproved.setAttribute('aria-selected','true');
+      tabPending.classList.remove('active'); tabPending.setAttribute('aria-selected','false');
+      pendingListEl.style.display = 'none';
+      approvedListEl.style.display = 'flex';
+    }
+  }
+  tabPending.addEventListener('click', ()=> setActiveTab('pending'));
+  tabApproved.addEventListener('click', ()=> setActiveTab('approved'));
+
+  function renderPendingList(){
+    pendingListEl.innerHTML = '';
+    const pending = loadPending();
+    if (!pending.length){ pendingListEl.innerHTML = '<div style="color:#666">No pending wishes</div>'; return; }
+    pending.forEach(item=>{
+      const node = document.createElement('div');
+      node.className = 'pending-item';
+      node.innerHTML = `<strong>${escapeHtml(item.name || 'Anonymous')}</strong> ${item.relation? '<em>('+escapeHtml(item.relation)+')</em>':''} <small style="float:right;color:#333">${escapeHtml(item.time)}</small><div style="margin-top:6px;white-space:pre-wrap">${escapeHtml(item.message)}</div>`;
+      const actions = document.createElement('div'); actions.className = 'pending-actions';
+      const approve = document.createElement('button'); approve.className = 'approve-btn'; approve.textContent = 'Approve';
+      const reject = document.createElement('button'); reject.className = 'reject-btn'; reject.textContent = 'Reject';
+      approve.addEventListener('click', ()=>{ approvePending(item.id); });
+      reject.addEventListener('click', ()=>{ rejectPending(item.id); });
+      actions.appendChild(approve); actions.appendChild(reject);
+      node.appendChild(actions);
+      pendingListEl.appendChild(node);
+    });
+  }
+
+  function renderApprovedAdminList(){
+    approvedListEl.innerHTML = '';
+    const approved = loadApproved();
+    if (!approved.length){ approvedListEl.innerHTML = '<div style="color:#666">No approved wishes</div>'; return; }
+    approved.forEach(item=>{
+      const node = document.createElement('div');
+      node.className = 'pending-item'; // reuse style
+      const hiddenLabel = item.hidden ? ' (hidden)' : '';
+      node.innerHTML = `<strong>${escapeHtml(item.name || 'Anonymous')}</strong> ${item.relation? '<em>('+escapeHtml(item.relation)+')</em>':''} <small style="float:right;color:#333">${escapeHtml(item.time)}${hiddenLabel}</small><div style="margin-top:6px;white-space:pre-wrap">${escapeHtml(item.message)}</div>`;
+      const actions = document.createElement('div'); actions.className = 'approved-actions';
+      // Hide / Unhide
+      if (!item.hidden){
+        const hideBtn = document.createElement('button'); hideBtn.className = 'hide-btn'; hideBtn.textContent = 'Hide';
+        hideBtn.addEventListener('click', ()=>{ hideApproved(item.id); });
+        actions.appendChild(hideBtn);
+      } else {
+        const unhideBtn = document.createElement('button'); unhideBtn.className = 'unhide-btn'; unhideBtn.textContent = 'Unhide';
+        unhideBtn.addEventListener('click', ()=>{ unhideApproved(item.id); });
+        actions.appendChild(unhideBtn);
+      }
+      // Delete option
+      const delBtn = document.createElement('button'); delBtn.className = 'delete-btn'; delBtn.textContent = 'Delete';
+      delBtn.addEventListener('click', ()=>{ deleteApproved(item.id); });
+      actions.appendChild(delBtn);
+
+      node.appendChild(actions);
+      approvedListEl.appendChild(node);
+    });
+  }
+
+  function approvePending(id){
+    const pending = loadPending();
+    const idx = pending.findIndex(p=>p.id === id);
+    if (idx === -1) return;
+    const [item] = pending.splice(idx,1);
+    // ensure "hidden" flag present and false for newly approved
+    item.hidden = false;
+    const approved = loadApproved();
+    approved.unshift(item);
+    saveApproved(approved);
+    savePending(pending);
+    renderApprovedList();
+    renderPendingList();
+    renderApprovedAdminList();
+    smallConfettiBurst(window.innerWidth/2, window.innerHeight/2, 22);
+  }
+  function rejectPending(id){
+    let pending = loadPending();
+    const idx = pending.findIndex(p=>p.id === id);
+    if (idx === -1) return;
+    pending.splice(idx,1);
+    savePending(pending);
+    renderPendingList();
+  }
+
+  // Hide approved wish from public page (set hidden=true)
+  function hideApproved(id){
+    const approved = loadApproved();
+    const idx = approved.findIndex(a=>a.id === id);
+    if (idx === -1) return;
+    approved[idx].hidden = true;
+    saveApproved(approved);
+    renderApprovedList();
+    renderApprovedAdminList();
+  }
+  // Unhide (set hidden=false)
+  function unhideApproved(id){
+    const approved = loadApproved();
+    const idx = approved.findIndex(a=>a.id === id);
+    if (idx === -1) return;
+    approved[idx].hidden = false;
+    saveApproved(approved);
+    renderApprovedList();
+    renderApprovedAdminList();
+  }
+  // Delete approved wish permanently
+  function deleteApproved(id){
+    let approved = loadApproved();
+    const idx = approved.findIndex(a=>a.id === id);
+    if (idx === -1) return;
+    if (!confirm('Delete this approved wish permanently?')) return;
+    approved.splice(idx,1);
+    saveApproved(approved);
+    renderApprovedList();
+    renderApprovedAdminList();
+  }
+
+  // simple keyboard shortcut to open admin (Ctrl+Shift+A)
+  window.addEventListener('keydown', (e)=>{
+    if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'a'){
+      const pass = prompt('Admin passphrase:');
+      if (!pass) return;
+      if (pass.trim() !== ADMIN_PASSPHRASE){ alert('Incorrect passphrase'); return; }
+      showAdminModal();
+    }
+  });
+
+  // update counts when storage changes in other tabs
+  window.addEventListener('storage', function(e){
+    if (e.key === KEY_PENDING || e.key === KEY_APPROVED) {
+      renderApprovedList();
+      updatePendingCounts();
+      // If admin modal is open, keep lists current
+      if (adminModalBackdrop.style.display === 'flex'){ renderPendingList(); renderApprovedAdminList(); }
+    }
+  });
+
+  // initialize pending counts
+  updatePendingCounts();
+
+})();
+
+/* ---------- Add-to-calendar (simple .ics generation and download) ---------- */
+(function(){
+  function createICS(title, description, location, startDateIso, endDateIso){
+    return [
+      'BEGIN:VCALENDAR',
+      'VERSION:2.0',
+      'PRODID:-//Wedding Invite//EN',
+      'BEGIN:VEVENT',
+      `UID:${Date.now()}@wedding`,
+      `DTSTAMP:${new Date().toISOString().replace(/[-:]/g,'').split('.')[0]}Z`,
+      `DTSTART:${startDateIso}`,
+      `DTEND:${endDateIso}`,
+      `SUMMARY:${title}`,
+      `DESCRIPTION:${description}`,
+      `LOCATION:${location}`,
+      'END:VEVENT',
+      'END:VCALENDAR'
+    ].join('\r\n');
+  }
+
+  const btn = document.getElementById('addCalendarBtn');
+  if (btn){
+    btn.addEventListener('click', function(){
+      const start = '20251130T190000';
+      const end = '20251130T220000';
+      const ics = createICS('Wedding: Kairav & Chandani', 'Wedding Ceremony of Kairav & Chandani', 'Gangabai Jagannath Garden Hall, Virar', start, end);
+      const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'Kairav_Chandani_Wedding.ics';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    });
+  }
+})();
+
+/* ---------- RSVP modal logic ---------- */
+(function(){
+  const openBtn = document.getElementById('openRsvp');
+  const backdrop = document.getElementById('modalBackdrop');
+  const closeBtn = document.getElementById('closeModal');
+  const submit = document.getElementById('submitRsvp');
+  const rsvpStatus = document.getElementById('rsvpStatus');
+
+  function openModal(){
+    backdrop.style.display = 'flex';
+    backdrop.setAttribute('aria-hidden','false');
+    document.getElementById('rsvpName').focus();
+  }
+  function closeModal(){
+    backdrop.style.display = 'none';
+    backdrop.setAttribute('aria-hidden','true');
+    openBtn.focus();
+  }
+
+  if (openBtn) openBtn.addEventListener('click', openModal);
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+  backdrop.addEventListener('click', function(e){ if (e.target === backdrop) closeModal(); });
+
+  if (submit){
+    submit.addEventListener('click', function(){
+      const name = document.getElementById('rsvpName').value.trim() || 'Guest';
+      const attending = document.getElementById('rsvpAttending').value;
+      const count = parseInt(document.getElementById('rsvpCount').value) || 1;
+      const now = new Date().toLocaleString();
+      try {
+        const list = JSON.parse(localStorage.getItem('rsvps') || '[]');
+        list.unshift({ name, attending, count, time: now });
+        localStorage.setItem('rsvps', JSON.stringify(list));
+      }catch(e){}
+      rsvpStatus.textContent = `Thanks ${name}! RSVP saved (${attending}, ${count})`;
+      smallConfettiBurst(window.innerWidth/2, window.innerHeight/2, 24);
+      setTimeout(()=> closeModal(), 1200);
+    });
+  }
+})();
+
+/* ---------- small accessibility: allow Enter on RSVP fields to submit ---------- */
+(function(){
+  const inputs = ['rsvpName','rsvpAttending','rsvpCount'];
+  inputs.forEach(id=>{
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.addEventListener('keydown', (e)=>{
+      if (e.key === 'Enter') {
+        const btn = document.getElementById('submitRsvp');
+        if (btn) btn.click();
+      }
+    });
+  });
+})();
+
+/* ---------- progressive enhancement: prefetch ganesh image ---------- */
+(function(){
+  const img = document.getElementById('ganeshImg');
+  if (img && img.complete === false) {
+    img.addEventListener('load', ()=>{ img.classList.add('loaded'); });
+  }
+})();
+
+</script>
 </body>
 </html>
